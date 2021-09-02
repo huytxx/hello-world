@@ -7,13 +7,13 @@ pipeline {
             }
         }
 
-        stage('Build stage') {
-            steps {
-                withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
-                    sh 'docker build -t xuanhuy1905/hello-world:v1 .'
-                    sh 'docker push xuanhuy1905/hello-world:v1'
-                }
-            }
-        }
+        // stage('Build stage') {
+        //     steps {
+        //         withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
+        //             sh 'docker build -t xuanhuy1905/hello-world:v1 .'
+        //             sh 'docker push xuanhuy1905/hello-world:v1'
+        //         }
+        //     }
+        // }
     }
 }
