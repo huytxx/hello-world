@@ -1,0 +1,23 @@
+# for local development
+version: "3.7"
+services:
+  api-ocr-service:
+    build: .
+    image: gptc-ocr:1.0
+    container_name: gptc-ocr
+    ports:
+      - "8000:8000"
+    restart: always
+    networks:
+      - default
+      - proxy
+    labels:
+      - "traefik.http.middlewares.testheader.headers.accesscontrolallowmethods=GET,OPTIONS,PUT,POST"
+      - "traefik.http.middlewares.testheader.headers.accesscontrolalloworiginlist= *"
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.gptc-ocr.entrypoints=websecure"
+      - "traefik.http.routers.gptc-ocr.rule=Host(`testocr.gnha.com.vn`)"
+networks:
+  proxy:
+    external: true
