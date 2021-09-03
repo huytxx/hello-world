@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {label 'vm-service'}
     stages {
         stage('Clone stage') {
             steps {
